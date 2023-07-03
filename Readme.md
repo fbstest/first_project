@@ -4,3 +4,5 @@
 trying editing of . 
 
 adding new line from text editor
+
+1) changes in first-project
