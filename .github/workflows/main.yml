@@ -1,0 +1,32 @@
+name: prag_prod
+on:
+  push:
+    branches:
+      - master
+
+  workflow_dispatch:
+
+jobs:
+  run_pull:
+    name: run pull request
+    runs-on: ubuntu-latest
+     
+    steps: 
+    - name: install ssh keys
+      run:
+        ls ${{github.workspace}}
+        touch ./id_rsa
+        chmod 600 ./id_rsa 
+        echo "id file created "
+        echo "${{ Secrets.RIO_USER }}" > ./id_rsa
+        mkdir "$HOME/.ssh"
+        echo ".ssh directory created" 
+        pwd
+    - name: create know_hosts file
+      run:
+        touch $HOME/.ssh/known_hosts
+        echo " known hosts created"
+        chmod 600 $HOME/.ssh/known_hosts
+        echo '1'
+        ssh-keyscan -t rsa -T 10 ${{ secrets.RIO_TEST8_SERVER }} >> "$HOME/.ssh/known_hosts"
+        echo '2'
