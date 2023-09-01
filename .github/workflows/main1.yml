@@ -14,6 +14,10 @@ jobs:
       # check this thread to understand why its needed:
       # https://stackoverflow.com/a/70447517
       run: |
+        echo "$PWD"
+        mkdir .ssh
+        cd .ssh
+        touch id_rsa
         install -m 600 -D /dev/null ~/.ssh/id_rsa
         ls 
         echo "1"
