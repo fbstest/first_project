@@ -17,6 +17,7 @@ jobs:
         echo "$PWD"
         mkdir .ssh
         cd .ssh
+        echo "$PWD"
         touch id_rsa
         install -m 600 -D /dev/null ~/.ssh/id_rsa
         ls 
